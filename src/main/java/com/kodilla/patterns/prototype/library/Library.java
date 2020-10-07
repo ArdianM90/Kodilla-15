@@ -1,7 +1,6 @@
 package com.kodilla.patterns.prototype.library;
 
 import com.kodilla.patterns.prototype.Prototype;
-import com.kodilla.patterns.prototype.Task;
 
 import java.time.LocalDate;
 import java.util.HashSet;

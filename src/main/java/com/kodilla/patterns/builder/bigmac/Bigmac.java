@@ -1,6 +1,7 @@
 package com.kodilla.patterns.builder.bigmac;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Bigmac {
@@ -10,7 +11,8 @@ public class Bigmac {
     public static final String STANDARD = "standard";
     public static final String THOUSAND_ISLAND = "thosand_island";
     public static final String BARBECUE = "barbecue";
-    private final List<String> ingredients; //lista składników dodatkowych (możliwe wartości to: sałata, cebula, bekon, ogórek, papryczki chilli, pieczarki, krewetki, ser).
+    public static final String[] AVAILABLE_INGREDIENTS = {"Lettuce", "Onion", "Bacon", "Cucumber", "Chilli peppers", "Mushrooms", "Prawns", "Cheese"};
+    private final List<String> ingredients; //lista składników dodatkowych ().
 
     public static class BigmacBuilder {
         private boolean bun;
@@ -32,15 +34,18 @@ public class Bigmac {
             if (sauce.equals(STANDARD) || sauce.equals(THOUSAND_ISLAND) || sauce.equals(BARBECUE)) {
                 this.sauce = sauce;
             } else {
-                throw new IllegalStateException("Figures of checkers should be BLACK or WHITE!");
+                throw new IllegalStateException("Requested sauce is not available.");
             }
-
             this.sauce = sauce;
             return this;
         }
 
         public Bigmac.BigmacBuilder ingredient(String ingredient) {
-            ingredients.add(ingredient);
+            if (Arrays.stream(AVAILABLE_INGREDIENTS).anyMatch(ingredient::equals)) {
+                ingredients.add(ingredient);
+            } else {
+                throw new IllegalStateException("Requested ingredient is not available.");
+            }
             return this;
         }
 

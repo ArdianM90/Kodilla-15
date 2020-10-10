@@ -11,7 +11,7 @@ public class BigmacTestSuite {
                 .bun(true)
                 .burgers(4)
                 .sauce("barbecue")
-                .ingredient("Tomatoe")
+                .ingredient("Onion")
                 .ingredient("Lettuce")
                 .ingredient("Cheese")
                 .build();

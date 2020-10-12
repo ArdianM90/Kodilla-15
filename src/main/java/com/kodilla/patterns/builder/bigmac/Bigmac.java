@@ -21,20 +21,13 @@ public class Bigmac {
         private String sauce;
         private List<String> ingredients = new ArrayList<>();
 
-        public Bigmac.BigmacBuilder bun(boolean sesame) {
-            this.bunWithSesame = sesame;
-            return this;
-        }
-
-        public Bigmac.BigmacBuilder burgers(int quantity) {
-            //if (quantity < 1) quantity = 1;
-            if (quantity >= 1) {
-                this.burgers = quantity;
+        public BigmacBuilder(boolean bunWithSesame, int burgersQuantity) {
+            this.bunWithSesame = bunWithSesame;
+            if (burgersQuantity >= 1) {
+                this.burgers = burgersQuantity;
             } else {
                 throw new IllegalStateException("Bigmac without burger is not possible. You have to order at least one.");
             }
-            //this.burgers = quantity;
-            return this;
         }
 
         public Bigmac.BigmacBuilder sauce(String sauce) {

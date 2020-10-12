@@ -27,8 +27,13 @@ public class Bigmac {
         }
 
         public Bigmac.BigmacBuilder burgers(int quantity) {
-            if (quantity < 1) quantity = 1;
-            this.burgers = quantity;
+            //if (quantity < 1) quantity = 1;
+            if (quantity >= 1) {
+                this.burgers = quantity;
+            } else {
+                throw new IllegalStateException("Bigmac without burger is not possible. You have to order at least one.");
+            }
+            //this.burgers = quantity;
             return this;
         }
 
@@ -43,7 +48,7 @@ public class Bigmac {
         }
 
         public Bigmac.BigmacBuilder ingredient(String ingredient) {
-            if (Arrays.stream(AVAILABLE_INGREDIENTS).anyMatch(ingredient::equals)) {
+            if (Arrays.asList(AVAILABLE_INGREDIENTS).contains(ingredient)) {
                 ingredients.add(ingredient);
             } else {
                 throw new IllegalStateException("Requested ingredient is not available.");
